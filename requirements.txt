@@ -1,0 +1,47 @@
+# ========================================
+# Core Dependencies
+# ========================================
+# RAG & Embeddings
+chromadb>=0.4.0
+sentence-transformers>=2.2.0
+
+# Knowledge Graph
+neo4j>=5.0.0
+
+# LLM Integration
+ollama>=0.1.0
+
+# ========================================
+# Document Processing
+# ========================================
+# PDF & Document handling
+python-docx>=0.8.11
+PyMuPDF>=1.23.0
+pdf2image>=1.16.0
+pytesseract>=0.3.10
+Pillow>=10.0.0
+
+# Text processing
+langchain-text-splitters>=0.0.1
+
+# ========================================
+# Web Framework
+# ========================================
+flask>=2.3.0
+flask-cors>=4.0.0
+pydantic>=2.0.0
+
+# ========================================
+# Utilities
+# ========================================
+python-dotenv>=1.0.0
+tqdm>=4.66.0
+requests>=2.31.0
+
+# ========================================
+# Development & Testing
+# ========================================
+pytest>=7.4.0
+pytest-cov>=4.1.0
+black>=23.0.0
+ruff>=0.1.0

@@ -293,17 +293,6 @@ NEO4J_PASSWORD=your_password_here
 
 ---
 
-## 📚 Documentation
-
-Detailed documentation is available in the `documentation/` folder:
-
-- 📖 [Project Journey](documentation/PROJECT_JOURNEY.md) - Development history
-- 🔍 [Source Code Analysis](documentation/SOURCE_CODE_ANALYSIS.md)
-- 🛠️ [Scripts Analysis](documentation/SCRIPTS_ANALYSIS.md)
-- 🔄 [RAG Modes Guide](documentation/RAG_MODES.md)
-
----
-
 ## 🤝 Contributing
 
 Contributions are welcome! Here's how:

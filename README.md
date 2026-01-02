@@ -82,44 +82,49 @@ Watch responses generate in real-time with SSE
 ## 📁 Project Structure
 
 ```
-🌿 Siddha-LLM/
+🌿 Siddha-Rag/
 │
-├── � api_server.py           # Flask REST API (Port 5001)
-├── � requirements.txt        # Python dependencies
-│
-├── 🎨 app/                    # Frontend Application
-│   ├── 📱 client/             # React + Vite
-│   │   └── src/components/    # ChatInput, MessageBubble, etc.
-│   └── 🔌 server/             # Express middleware
-│       └── storage.ts         # Backend integration
+├── 🐍 api_server.py           # Flask REST API (Port 5001)
+├── 📋 requirements.txt        # Python dependencies
+├── 📄 LICENSE                 # MIT License
+├── � README.md               # This file
+├── � .gitignore              # Git ignore rules
 │
 ├── 🧠 src/                    # Core Python Modules
-│   ├── � rag/                # RAG System
+│   ├── 🔍 rag/                # RAG System
 │   │   ├── rag_system.py      # Main SiddhaRAG class
 │   │   ├── retriever.py       # Document retrieval
 │   │   ├── generator.py       # LLM response generation
-│   │   └── embeddings.py      # Sentence transformers
+│   │   ├── embeddings.py      # Sentence transformers
+│   │   └── start_rag.py       # CLI launcher
 │   │
-│   ├── � pipeline/           # Document Processing
+│   ├── ⚙️ pipeline/           # Document Processing
 │   │   ├── main_pipeline.py   # Ingestion pipeline
-│   │   └── chunking.py        # Text chunking
+│   │   ├── chunking.py        # Text chunking
+│   │   ├── cleaner.py         # Text cleaning
+│   │   ├── ocr_engine.py      # OCR processing
+│   │   └── ingest.py          # Document ingestion
 │   │
-│   └── � graph/              # Knowledge Graph
+│   └── 🔗 graph/              # Knowledge Graph
 │       ├── entity_extractor.py
 │       ├── graph_builder.py
-│       └── hybrid_retriever.py
+│       ├── hybrid_retriever.py
+│       ├── siddha_entities.py
+│       └── schema.cypher      # Neo4j schema
 │
-├── �️ scripts/                # CLI Utilities
+├── 🤖 models/                 # Model Configuration
+│   ├── config.py              # Model settings
+│   ├── model_manager.py       # Ollama manager
+│   └── OLLAMA_README.md       # Ollama setup guide
+│
+├── 🛠️ scripts/                # CLI Utilities
 │   ├── setup_neo4j.py         # Initialize database
-│   └── migrate_to_graph.py    # Populate graph
+│   ├── migrate_to_graph.py    # Populate graph
+│   ├── migrate_with_groq.py   # Groq-powered migration
+│   ├── graph_export.py        # Export graph data
+│   └── import_graph_data.py   # Import graph data
 │
-├── � data/                   # Data Storage
-│   ├── raw/                   # Original documents
-│   ├── processed/             # Cleaned texts
-│   ├── vectordb/              # ChromaDB
-│   └── graphdb/               # Neo4j exports
-│
-└── � documentation/          # Docs & Guides
+└── 🧪 test_retrieval.py       # Test script
 ```
 
 ---

@@ -7,12 +7,11 @@
 **A Hybrid RAG System for Traditional Siddha Medicine Knowledge**
 
 [![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://typescriptlang.org)
-[![React](https://img.shields.io/badge/React-18.3-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev)
 [![Neo4j](https://img.shields.io/badge/Neo4j-5.x-4581C3?style=for-the-badge&logo=neo4j&logoColor=white)](https://neo4j.com)
+[![ChromaDB](https://img.shields.io/badge/ChromaDB-Vector_DB-FF6B6B?style=for-the-badge)](https://www.trychroma.com)
 [![Ollama](https://img.shields.io/badge/Ollama-Local_LLM-000000?style=for-the-badge&logo=ollama&logoColor=white)](https://ollama.ai)
 
-[Features](#-features) • [Quick Start](#-quick-start) • [Architecture](#-architecture) • [Documentation](#-documentation)
+[Features](#-features) • [Quick Start](#-quick-start) • [Architecture](#-architecture)
 
 ---
 
@@ -37,8 +36,8 @@
 ### 🧠 Hybrid RAG Engine
 Combines **vector search** (ChromaDB) with **knowledge graph** (Neo4j) for superior accuracy
 
-### 🌐 Modern Web Interface  
-Beautiful React + TypeScript frontend with dark mode support
+### 💻 CLI & REST API  
+Interactive command-line interface and Flask REST API
 
 ### 🔒 Privacy-First
 Runs entirely **locally** using Ollama - your data never leaves your machine
@@ -103,9 +102,11 @@ Watch responses generate in real-time with SSE
 │   │   ├── chunking.py        # Text chunking
 │   │   ├── cleaner.py         # Text cleaning
 │   │   ├── ocr_engine.py      # OCR processing
-│   │   └── ingest.py          # Document ingestion
+│   │   ├── ingest.py          # Document ingestion
+│   │   └── graph_builder.py   # Graph construction
 │   │
 │   └── 🔗 graph/              # Knowledge Graph
+│       ├── config.py          # Graph configuration
 │       ├── entity_extractor.py
 │       ├── graph_builder.py
 │       ├── hybrid_retriever.py
@@ -136,7 +137,6 @@ Watch responses generate in real-time with SSE
 | Requirement | Version | Purpose |
 |-------------|---------|---------|
 | 🐍 Python | 3.11+ | Backend |
-| 📦 Node.js | 18+ | Frontend |
 | 🦙 Ollama | Latest | Local LLM |
 | 🔗 Neo4j Desktop | 5.x | Graph (optional) |
 
@@ -144,18 +144,15 @@ Watch responses generate in real-time with SSE
 
 ```bash
 # 1️⃣ Clone the repository
-git clone https://github.com/YashvanthsKernel/Siddha-LLM.git
-cd Siddha-LLM
+git clone https://github.com/YashvanthsKernel/Siddha-Rag.git
+cd Siddha-Rag
 
 # 2️⃣ Setup Python environment
 python -m venv .venv
 .venv\Scripts\Activate.ps1  # Windows
 pip install -r requirements.txt
 
-# 3️⃣ Setup Frontend
-cd app && npm install && cd ..
-
-# 4️⃣ Download Ollama model
+# 3️⃣ Download Ollama model
 ollama pull llama3.2:3b
 ```
 
@@ -175,19 +172,13 @@ ollama pull llama3.2:3b
 <tr>
 <td>2️⃣</td>
 <td><code>python api_server.py --password YOUR_PASS</code></td>
-<td>🐍 Backend API</td>
-</tr>
-<tr>
-<td>3️⃣</td>
-<td><code>cd app && npm run dev</code></td>
-<td>🎨 Frontend</td>
+<td>🐍 REST API (Port 5001)</td>
 </tr>
 </table>
 
-### 🌐 Open in Browser
-
-```
-http://localhost:5000
+**Or use the interactive CLI:**
+```bash
+python src/rag/start_rag.py --mode hybrid --password YOUR_PASS
 ```
 
 ---
@@ -196,12 +187,7 @@ http://localhost:5000
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
-│                        🎨 Frontend (React)                       │
-│                      http://localhost:5000                       │
-└────────────────────────────┬─────────────────────────────────────┘
-                             │ HTTP
-┌────────────────────────────▼─────────────────────────────────────┐
-│                    🐍 Flask API Server                           │
+│              🐍 Flask API Server / CLI Interface                 │
 │                      Port 5001                                   │
 │  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐              │
 │  │  /api/query │  │ /api/chats  │  │/api/suggest │              │
